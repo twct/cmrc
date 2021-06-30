@@ -545,11 +545,6 @@ function(cmrc_add_resources name)
         # Generate a filename based on the input filename that we can put in
         # the intermediate directory.
         file(RELATIVE_PATH relpath "${ARG_WHENCE}" "${abs_in}")
-        if(relpath MATCHES "^\\.\\.")
-            # For now we just error on files that exist outside of the soure dir.
-            message(SEND_ERROR "Cannot add file '${input}': File must be in a subdirectory of ${ARG_WHENCE}")
-            continue()
-        endif()
         if(DEFINED ARG_PREFIX)
             _cmrc_normalize_path(ARG_PREFIX)
         endif()
